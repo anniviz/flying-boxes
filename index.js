@@ -80,4 +80,8 @@ function reduceLives() {
 
 function gameOver() {
   console.log('game over!')
+  const gameOverSign = document.createElement('div')
+  gameOverSign.className = 'gameover'
+  gameOverSign.textContent = 'game over 🤯'
+  document.body.appendChild(gameOverSign)
 }
