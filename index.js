@@ -1,6 +1,8 @@
 console.clear()
 let i = 0
 let points = 0
+let lives = 10
+let countLives = 0
 const boxes = []
 
 update()
@@ -21,9 +23,11 @@ function update() {
     if (box.x > window.innerWidth) {
       boxes.splice(index, 1)
       box.el.remove()
+      reduceLives()
     }
   })
-  requestAnimationFrame(update)
+
+  lives > 0 ? requestAnimationFrame(update) : gameOver()
 }
 
 function createBox() {
@@ -40,7 +44,7 @@ function createBox() {
     y: Math.random() * window.innerHeight - el.getBoundingClientRect().height,
     size: 30 + Math.random() * 100,
     speed: 1,
-    acceleration: 1.01
+    acceleration: 1.001
   }
 
   el.addEventListener('click', () => {
@@ -55,6 +59,25 @@ function createBox() {
 
 function addPoint() {
   points++
-  const output = document.querySelector('output')
+  const output = document.querySelector('.js-points')
   output.textContent = points
+}
+
+function reduceLives() {
+  countLives++
+  // console.log('count' + countLives)
+  countLives % 10 ? false : lives--
+  //console.log(lives)
+  /*
+  if (countLives%10 === false) {
+    lives--  
+    console.log(lives)
+  }
+  */
+  const liveTracer = document.querySelector('.js-lives')
+  liveTracer.textContent = lives
+}
+
+function gameOver() {
+  console.log('game over!')
 }

@@ -2,9 +2,16 @@ body {
   background: papayawhip;
 }
 
-output {
+.points {
   position: absolute;
   right: 20px;
+  top: 20px;
+  font-size: 3em;
+  z-index: 1;
+}
+.lives {
+  position: absolute;
+  left: 20px;
   top: 20px;
   font-size: 3em;
   z-index: 1;
