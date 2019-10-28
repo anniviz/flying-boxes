@@ -2,7 +2,7 @@ console.clear()
 let i = 0
 let points = 0
 let lives = 10
-let countLives = 0
+let numBoxesOut = 0
 const boxes = []
 
 update()
@@ -60,22 +60,16 @@ function createBox() {
 function addPoint() {
   points++
   const output = document.querySelector('.js-points')
-  output.textContent = points
+  output.textContent = '🏆' + points
 }
 
 function reduceLives() {
-  countLives++
-  // console.log('count' + countLives)
-  countLives % 10 ? false : lives--
-  //console.log(lives)
-  /*
-  if (countLives%10 === false) {
-    lives--  
-    console.log(lives)
-  }
-  */
-  const liveTracer = document.querySelector('.js-lives')
-  liveTracer.textContent = lives
+  ++numBoxesOut
+  // console.log('count' + numBoxesOut)
+  //numBoxesOut % 10 ? false : lives--
+  numBoxesOut % 10 || lives--
+  const liveTracker = document.querySelector('.js-lives')
+  liveTracker.textContent = '❤️ ' + lives
 }
 
 function gameOver() {
